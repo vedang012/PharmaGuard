@@ -21,10 +21,10 @@ public class PharmaGuardResponse {
     private final PharmacogenomicProfile pharmacogenomicProfile;
 
     @JsonProperty("clinical_recommendation")
-    private final Object clinicalRecommendation;
+    private final ClinicalRecommendation clinicalRecommendation;
 
     @JsonProperty("llm_generated_explanation")
-    private final Object llmGeneratedExplanation;
+    private final LlmExplanation llmGeneratedExplanation;
 
     @JsonProperty("quality_metrics")
     private final QualityMetrics qualityMetrics;
@@ -34,14 +34,16 @@ public class PharmaGuardResponse {
                                String timestamp,
                                RiskAssessment riskAssessment,
                                PharmacogenomicProfile pharmacogenomicProfile,
+                               ClinicalRecommendation clinicalRecommendation,
+                               LlmExplanation llmGeneratedExplanation,
                                QualityMetrics qualityMetrics) {
         this.patientId               = patientId;
         this.drug                    = drug;
         this.timestamp               = timestamp;
         this.riskAssessment          = riskAssessment;
         this.pharmacogenomicProfile  = pharmacogenomicProfile;
-        this.clinicalRecommendation  = new Object();  // placeholder — populated later
-        this.llmGeneratedExplanation = new Object();  // placeholder — populated by LLM layer
+        this.clinicalRecommendation  = clinicalRecommendation;
+        this.llmGeneratedExplanation = llmGeneratedExplanation;
         this.qualityMetrics          = qualityMetrics;
     }
 
@@ -50,8 +52,7 @@ public class PharmaGuardResponse {
     public String                  getTimestamp()              { return timestamp; }
     public RiskAssessment          getRiskAssessment()         { return riskAssessment; }
     public PharmacogenomicProfile  getPharmacogenomicProfile() { return pharmacogenomicProfile; }
-    public Object                  getClinicalRecommendation() { return clinicalRecommendation; }
-    public Object                  getLlmGeneratedExplanation(){ return llmGeneratedExplanation; }
+    public ClinicalRecommendation   getClinicalRecommendation() { return clinicalRecommendation; }
+    public LlmExplanation          getLlmGeneratedExplanation() { return llmGeneratedExplanation; }
     public QualityMetrics          getQualityMetrics()         { return qualityMetrics; }
 }
-

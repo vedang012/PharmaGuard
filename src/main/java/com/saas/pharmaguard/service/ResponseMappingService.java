@@ -1,7 +1,9 @@
 package com.saas.pharmaguard.service;
 
 import com.saas.pharmaguard.dto.DrugRiskResult;
+import com.saas.pharmaguard.dto.response.ClinicalRecommendation;
 import com.saas.pharmaguard.dto.response.DetectedVariant;
+import com.saas.pharmaguard.dto.response.LlmExplanation;
 import com.saas.pharmaguard.dto.response.PharmacogenomicProfile;
 import com.saas.pharmaguard.dto.response.PharmaGuardResponse;
 import com.saas.pharmaguard.dto.response.QualityMetrics;
@@ -32,6 +34,15 @@ import java.util.stream.Collectors;
  */
 @Service
 public class ResponseMappingService {
+
+    private final ClinicalRecommendationService clinicalRecommendationService;
+    private final LlmExplanationService         llmExplanationService;
+
+    public ResponseMappingService(ClinicalRecommendationService clinicalRecommendationService,
+                                  LlmExplanationService llmExplanationService) {
+        this.clinicalRecommendationService = clinicalRecommendationService;
+        this.llmExplanationService         = llmExplanationService;
+    }
 
     /**
      * Maps verbose PhenotypeRules labels → CPIC short codes.
@@ -79,17 +90,25 @@ public class ResponseMappingService {
 
     // ── private ──────────────────────────────────────────────────────────────
 
-    private PharmaGuardResponse buildResponse(DrugRiskResult         risk,
+    private PharmaGuardResponse buildResponse(DrugRiskResult           risk,
                                                Map<String, GeneProfile> profileByGene,
-                                               List<VcfVariant>        allVariants,
-                                               String                  patientId,
-                                               String                  timestamp,
-                                               QualityMetrics          qm) {
-        String gene = risk.getBasedOnGene();
-
+                                               List<VcfVariant>         allVariants,
+                                               String                   patientId,
+                                               String                   timestamp,
+                                               QualityMetrics           qm) {
+        String gene    = risk.getBasedOnGene();
         GeneProfile profile = gene != null ? profileByGene.get(gene) : null;
 
         PharmacogenomicProfile pgxProfile = buildPgxProfile(gene, profile, allVariants);
+
+        String riskLabel = risk.getRiskAssessment() != null
+                ? risk.getRiskAssessment().getRiskLabel()
+                : "Unknown";
+
+        ClinicalRecommendation recommendation =
+                clinicalRecommendationService.recommend(risk.getDrug(), riskLabel);
+
+        LlmExplanation explanation = llmExplanationService.generateSummary(risk, pgxProfile, recommendation);
 
         return new PharmaGuardResponse(
                 patientId,
@@ -97,6 +116,8 @@ public class ResponseMappingService {
                 timestamp,
                 risk.getRiskAssessment(),
                 pgxProfile,
+                recommendation,
+                explanation,
                 qm
         );
     }
