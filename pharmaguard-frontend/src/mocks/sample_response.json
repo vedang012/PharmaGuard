@@ -1,0 +1,68 @@
+[
+    {
+        "patient_id": "d8c5da9e-b4cb-4be7-aca2-b257ed16a6b0",
+        "drug": "CODEINE",
+        "timestamp": "2026-02-19T20:23:12.649874838Z",
+        "risk_assessment": {
+            "riskLabel": "Safe",
+            "confidenceScore": 0.95,
+            "severity": "none"
+        },
+        "pharmacogenomic_profile": {
+            "primary_gene": "CYP2D6",
+            "diplotype": "*1/*2",
+            "phenotype": "NM",
+            "detected_variants": [
+                {
+                    "rsid": "rs16947",
+                    "star_allele": "*2",
+                    "genotype": "0/1"
+                }
+            ]
+        },
+        "clinical_recommendation": {
+            "action": "Proceed with standard dosing",
+            "recommendation": "Codeine can be used at standard doses. No dose adjustment required.",
+            "monitoring": "Standard pain reassessment at follow-up."
+        },
+        "llm_generated_explanation": {
+            "summary": "Explanation unavailable — pharmacogenomic profile and risk assessment are provided in the structured fields above."
+        },
+        "quality_metrics": {
+            "vcf_parsing_success": true
+        }
+    },
+    {
+        "patient_id": "d8c5da9e-b4cb-4be7-aca2-b257ed16a6b0",
+        "drug": "WARFARIN",
+        "timestamp": "2026-02-19T20:23:12.649874838Z",
+        "risk_assessment": {
+            "riskLabel": "Adjust Dosage",
+            "confidenceScore": 0.95,
+            "severity": "moderate"
+        },
+        "pharmacogenomic_profile": {
+            "primary_gene": "CYP2C9",
+            "diplotype": "*1/*2",
+            "phenotype": "IM",
+            "detected_variants": [
+                {
+                    "rsid": "rs1799853",
+                    "star_allele": "*2",
+                    "genotype": "0/1"
+                }
+            ]
+        },
+        "clinical_recommendation": {
+            "action": "Reduce initial warfarin dose by 25–50%",
+            "recommendation": "Reduced CYP2C9 activity will slow warfarin clearance. Initiate at 25–50% of standard dose to avoid supratherapeutic INR.",
+            "monitoring": "Increase INR monitoring frequency: days 3, 5, 7, 10. Target INR 2.0–3.0."
+        },
+        "llm_generated_explanation": {
+            "summary": "Explanation unavailable — pharmacogenomic profile and risk assessment are provided in the structured fields above."
+        },
+        "quality_metrics": {
+            "vcf_parsing_success": true
+        }
+    }
+]
