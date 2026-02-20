@@ -6,17 +6,14 @@ It transforms raw genetic variant data into structured, explainable medication r
 
 ---
 
-## 🔗 Live Demo
+##  Live Demo
 
-**Frontend (Vercel):**
-https://your-frontend-url.vercel.app
-
-**Backend (Render):**
-https://your-backend-url.onrender.com
+**Application (On Vercel):**
+https://pharmaguard-ui.vercel.app
 
 ---
 
-## 🏗️ System Architecture
+##  System Architecture
 
 ### Full Pipeline Flow
 
@@ -110,16 +107,16 @@ https://your-backend-url.onrender.com
 
 ### Design Principles
 
-- 🔒 **Deterministic clinical logic** — AI never makes risk decisions
-- 🔍 **Explainable variant traceability** — every risk traces back to a specific variant
-- 📋 **Strict schema-compliant JSON output** — consistent, parseable response
-- 🧱 **Separation of logic and explanation layers** — LLM is summary-only
-- ⚙️ **Environment-driven configuration** — no hardcoded secrets
-- 🐳 **Production-ready Docker deployment** — Render-hosted containerized backend
+-  **Deterministic clinical logic** — AI never makes risk decisions
+-  **Explainable variant traceability** — every risk traces back to a specific variant
+-  **Strict schema-compliant JSON output** — consistent, parseable response
+-  **Separation of logic and explanation layers** — LLM is summary-only
+-  **Environment-driven configuration** — no hardcoded secrets
+-  **Production-ready Docker deployment** — Render-hosted containerized backend
 
 ---
 
-## 🖥️ Backend — Clinical Decision Engine
+##  Backend — Clinical Decision Engine
 
 ### Tech Stack
 
@@ -146,7 +143,7 @@ https://your-backend-url.onrender.com
 
 ---
 
-## 🌐 Frontend — PharmaGuard SPA
+##  Frontend — PharmaGuard SPA
 
 ### Tech Stack
 
@@ -171,18 +168,17 @@ https://your-backend-url.onrender.com
 
 ### Key Features
 
-- 🌗 Dark / Light theme toggle
-- 📂 Drag-and-drop VCF upload
-- 💊 6 drug selection chips
-- 🔵 Animated confidence ring
-- 🧬 Gene accordion & variant table
-- 🤖 LLM explanation panel
-- `{}` JSON viewer + download
-- 🧪 Mock mode for local development
+-  Dark / Light theme toggle
+-  Drag-and-drop VCF upload
+-  6 drug selection chips
+-  Animated confidence ring
+-  Gene accordion & variant table
+-  LLM explanation panel
+-  JSON viewer + download
 
 ---
 
-## ⚙️ Installation
+##  Installation
 
 ### Backend Setup
 
@@ -192,23 +188,8 @@ git clone https://github.com/vedang012/PharmaGuard.git
 cd PharmaGuard/pharmaguard-backend
 ```
 
-**2. Configure environment variables**
-```bash
-git clone https://github.com/vedang012/PharmaGuard.git
-cd PharmaGuard/pharmaguard-backend
-```
 
 **2. Configure environment variables**
-```bash
-git clone https://github.com/vedang012/PharmaGuard.git
-cd PharmaGuard/pharmaguard-backend
-```
-
-**2. Configure environment variables**
-```bash
-git clone https://github.com/vedang012/PharmaGuard.git
-cd PharmaGuard/pharmaguard-backend
-```
 
 **3. `application.properties`**
 ```properties
@@ -225,7 +206,7 @@ mvn spring-boot:run
 
 ---
 
-### 🐳 Docker Deployment (Render)
+###  Docker Deployment (Render)
 
 ```dockerfile
 FROM maven:3.9.6-eclipse-temurin-21 AS builder
@@ -303,7 +284,7 @@ drugs=WARFARIN,CLOPIDOGREL
 
 ---
 
-## 💊 Supported Drugs
+##  Supported Drugs
 
 | Drug | Gene(s) | Risk Category |
 |---|---|---|
@@ -316,15 +297,15 @@ drugs=WARFARIN,CLOPIDOGREL
 
 ---
 
-## 👥 Team Members
+##  Team Members
 
-- **Your Name** — Backend Architecture & Clinical Engine
-- **Teammate Name** — Frontend Development
-- **Teammate Name** — AI Integration & Deployment
+- **Vedang Solaskar** — Backend Architecture & Clinical Engine
+- **Mrudul Bokade** — Frontend Development
+- **Rishikesh Nate** — AI Integration & Deployment
 
 ---
 
-## 🏆 Hackathon Highlights
+##  Hackathon Highlights
 
 - ✅ Deterministic pharmacogenomic engine
 - ✅ Explainable AI (LLM for clinical summary only)
