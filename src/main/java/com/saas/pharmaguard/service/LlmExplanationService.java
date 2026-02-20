@@ -24,7 +24,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class LlmExplanationService {
 
-    private static final String MODEL = "gemini-2.5-pro";
+    private static final String MODEL = "gemini-2.5-flash";
 
     private static final String FALLBACK_SUMMARY =
             "Explanation unavailable — pharmacogenomic profile and risk assessment " +
