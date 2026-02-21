@@ -10,6 +10,7 @@ It transforms raw genetic variant data into structured, explainable medication r
 
 **Application (On Vercel):**
 https://pharmaguard-ui.vercel.app
+(note : A demo VCF file is provided in the repository for testing the application)
 
 ---
 
